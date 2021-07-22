@@ -2,15 +2,11 @@ package com.pk4u.e_commerce.model;
 
 public class Course {
 
-    int id;
-    String img;
-    String title;
-    String date;
-    String level;
-    String color;
-    String text;
+    int id,catagory;
+    String img,title,date,level,color,text;
 
-    public Course(int id, String img, String title, String date, String level, String color, String text) {
+
+    public Course(int id, String img, String title, String date, String level, String color, String text,int category) {
         this.id = id;
         this.img = img;
         this.title = title;
@@ -18,6 +14,14 @@ public class Course {
         this.level = level;
         this.color = color;
         this.text = text;
+        this.catagory = category;
+    }
+
+    public int getCatagory() {
+        return catagory;
+    }
+    public void setCatagory(int catagory) {
+        this.catagory = catagory;
     }
 
     public int getId() {

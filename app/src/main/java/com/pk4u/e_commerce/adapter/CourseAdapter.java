@@ -7,12 +7,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.util.Pair;
 import android.view.LayoutInflater;
-import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -27,7 +24,7 @@ import java.util.List;
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder> {
 
     Context context;
-    List<Course> corses;
+    List<Course> courses;
 
     @NonNull
     @Override
@@ -36,21 +33,21 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         return new CourseAdapter.CourseViewHolder(courseItems);
     }
 
-    public CourseAdapter(Context context, List<Course> corses) {
+    public CourseAdapter(Context context, List<Course> courses) {
         this.context = context;
-        this.corses = corses;
+        this.courses = courses;
     }
 
     @Override
     public void onBindViewHolder(@NonNull CourseViewHolder holder, int position) {
-        holder.courseBg.setCardBackgroundColor(Color.parseColor(corses.get(position).getColor()));
+        holder.courseBg.setCardBackgroundColor(Color.parseColor(courses.get(position).getColor()));
 
-        int imageId = context.getResources().getIdentifier("ic_" + corses.get(position).getImg(), "drawable", context.getPackageName());
+        int imageId = context.getResources().getIdentifier("ic_" + courses.get(position).getImg(), "drawable", context.getPackageName());
         holder.courseImage.setImageResource(imageId);
 
-        holder.courseTitle.setText(corses.get(position).getTitle());
-        holder.courseDate.setText(corses.get(position).getDate());
-        holder.courseLevel.setText(corses.get(position).getLevel());
+        holder.courseTitle.setText(courses.get(position).getTitle());
+        holder.courseDate.setText(courses.get(position).getDate());
+        holder.courseLevel.setText(courses.get(position).getLevel());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,12 +56,12 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
 
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) context,new Pair<View,String>(holder.courseImage,"courseImage"));
 
-                intent.putExtra("courseBg",Color.parseColor(corses.get(position).getColor()));
+                intent.putExtra("courseBg",Color.parseColor(courses.get(position).getColor()));
                 intent.putExtra("courseImage",imageId);
-                intent.putExtra("courseTitle",corses.get(position).getTitle());
-                intent.putExtra("courseDate",corses.get(position).getDate());
-                intent.putExtra("courseLevel",corses.get(position).getLevel());
-                intent.putExtra("courseText",corses.get(position).getText());
+                intent.putExtra("courseTitle", courses.get(position).getTitle());
+                intent.putExtra("courseDate", courses.get(position).getDate());
+                intent.putExtra("courseLevel", courses.get(position).getLevel());
+                intent.putExtra("courseText", courses.get(position).getText());
 
                 context.startActivity(intent,options.toBundle());
             }
@@ -73,7 +70,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
 
     @Override
     public int getItemCount() {
-        return corses.size();
+        return courses.size();
     }
 
     public static final class CourseViewHolder extends RecyclerView.ViewHolder{
