@@ -3,7 +3,11 @@ package com.pk4u.e_commerce;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
 import com.pk4u.e_commerce.adapter.CategoryAdapter;
 import com.pk4u.e_commerce.adapter.CourseAdapter;
 import com.pk4u.e_commerce.model.Category;
@@ -45,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
         setCourseRecycler(courseList);
     }
 
+    public void openShoppingCart(View view) {
+        Intent intent = new Intent(this,OrderPage.class);
+        startActivity(intent);
+    }
+
     private void setCourseRecycler(List<Course> courseList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
 
@@ -81,4 +90,5 @@ public class MainActivity extends AppCompatActivity {
 
         courseAdapter.notifyDataSetChanged();
     }
+
 }
